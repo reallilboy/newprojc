@@ -5,4 +5,5 @@ urlpatterns = [
         path('login_user/',shop_views.login_user,name='login_user'),
         path('logout/',shop_views.logout_user,name='logout_user'),
         path('signup_user/',shop_views.signup_user,name='signup_user'),
+        path('product_detail/<int:pk>',shop_views.single_product,name='single_product'),
 ]

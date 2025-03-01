@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,31 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <title>Hexashop - Product Detail Page</title>
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
-
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
-
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
-
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
+    <title>Hexashop Ecommerce HTML CSS Template</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-hexashop.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl-carousel.css' %} %}">
+    <link rel="stylesheet" href="{% static 'assets/css/lightbox.css' %} %}">
     </head>
-    
+    </head>
+
     <body>
-    
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -40,10 +27,10 @@ https://templatemo.com/tm-571-hexashop
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -80,7 +67,7 @@ https://templatemo.com/tm-571-hexashop
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        </ul>        
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -107,21 +94,21 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-
+{{ products_detail }}
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="assets/images/single-product-01.jpg" alt="">
+                    <img src="{{ products_detail.product_image.url }}" alt="">
                     <img src="assets/images/single-product-02.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>New Green Jacket</h4>
-                    <span class="price">$75.00</span>
+                    <h4>{{ products_detail.product_name }}</h4>
+                    <span class="price">{{ products_detail.price }} تومان</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -153,7 +140,7 @@ https://templatemo.com/tm-571-hexashop
         </div>
     </section>
     <!-- ***** Product Area Ends ***** -->
-    
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -198,8 +185,8 @@ https://templatemo.com/tm-571-hexashop
                 </div>
                 <div class="col-lg-12">
                     <div class="under-footer">
-                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved. 
-                        
+                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
+
                         <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -212,30 +199,24 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </footer>
-    
+
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+       <script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.js' %} "></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+    <script src="{% static 'assets/js/datepicker.js' %}"></script>
+    <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/imgfix.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/lightbox.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %} %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
-    <script src="assets/js/quantity.js"></script>
-    
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
 
     <script>
 
@@ -249,7 +230,7 @@ https://templatemo.com/tm-571-hexashop
               $("."+selectedClass).fadeIn();
               $("#portfolio").fadeTo(50, 1);
             }, 500);
-                
+
             });
         });
 

@@ -44,3 +44,7 @@ def signup_user(request):
     else:
         form = CustomUserForm()
     return render(request, 'signup_user.html', {'form': form})
+
+def single_product(request,pk):
+       products_detail = Products.objects.get(id=pk)
+       return render(request,'single_product.html',{'products_detail':products_detail})
