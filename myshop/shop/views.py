@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from . models import Products,Category
 # Create your views here.
 def home(request):
-        return render(request,'index.html',{})
+        products = Products.objects.all()
+        return render(request,'index.html',{'products':products})

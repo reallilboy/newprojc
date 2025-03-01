@@ -5,12 +5,14 @@ import datetime
 
 class Category(models.Model):
         name = models.CharField(max_length=30)
+        slug = models.SlugField(default=True)
 
         def __str__(self):
                 return self.name
 
 class Products(models.Model):
         product_name = models.CharField( max_length=50)
+        category = models.ForeignKey(Category,on_delete=models.CASCADE,default=1)
         price = models.DecimalField( max_digits=100, decimal_places=0,default=0)
         product_image = models.ImageField(upload_to='uploads/products_iamge')
         product_name = models.CharField( max_length=50)
