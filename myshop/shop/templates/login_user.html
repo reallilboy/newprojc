@@ -1,0 +1,31 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+    <title>Login Page</title>
+</head>
+<style>
+    body{
+      background: linear-gradient(to right, #dad299, #b0dab9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+</style>
+<body>
+    <div class="login-container">
+        <h2>ورود</h2>
+        <form action="{% url 'login_user' %}" method="POST">
+                 {% csrf_token %}
+            <label for="username">نام کاربری</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">رمز عبور</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" value="ورود" class="btn">ورود</button>
+
+        </form>
+    </div>
+</body>
+</html>
