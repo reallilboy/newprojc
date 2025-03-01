@@ -1,5 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
-<html  >
+<html>
 
   <head>
 
@@ -13,15 +14,15 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/assets/css/bootstrap.min.css' %}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-hexashop.css' %}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{% static 'assets/css/owl-carousel.css' %} %}">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="{% static 'assets/css/lightbox.css' %} %}">
 
     </head>
 
@@ -46,7 +47,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/logo.png">
+                            <img src="{% static 'assets/images/logo.png' %}">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -84,7 +85,7 @@
                                     <a href="#">Purchase Now!</a>
                                 </div>
                             </div>
-                            <img src="assets/images/left-banner-image.jpg" alt="">
+                            <img src="{% static 'assets/images/left-banner-image.jpg' %}" alt="">
                         </div>
                     </div>
                 </div>
@@ -107,7 +108,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-01.jpg">
+                                        <img src="{% static 'assets/images/baner-right-image-01.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-02.jpg">
+                                        <img src="{%static 'assets/images/baner-right-image-02.jpg' %} ">
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +148,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-03.jpg">
+                                        <img src="{% static 'assets/images/baner-right-image-03.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +168,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/baner-right-image-04.jpg">
+                                        <img src="{% static 'assets/images/baner-right-image-04.jpg' %}">
                                     </div>
                                 </div>
                             </div>
@@ -589,26 +590,26 @@
 
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
+    <script src="{% static  'assets/js/popper.js' %}"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/isotope.js"></script>
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+    <script src="{% static 'assets/js/datepicker.js' %}"></script>
+    <script src="{% static 'assets/js/scrollreveal.min.js'%}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/imgfix.min.js'%}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/lightbox.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 
     <script>
 
