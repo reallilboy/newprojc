@@ -16,6 +16,7 @@
                         </a>
                         <ul class="nav">
                             {% if user.is_authenticated %}
+                                <h3>well come {{ user.username }}</h3>
                                 <a class="badge rounded-pill bg-danger text-dark" href="{% url 'logout_user' %}" style='padding: 15px 10px;'>LOG OUT</a>
                             {% else %}
                                 <a class="badge rounded-pill bg-success" href={% url 'login_user' %} style='padding: 15px 10px;'>LOGIN</a>
@@ -38,8 +39,6 @@
                 </div>
             </div>
         </div>
-
-
     </header>
     <div class="" id="top">
         <div class="container">

@@ -13,6 +13,11 @@
     }
 </style>
 <body>
+               {% if messages %}
+            {% for message in messages %}
+                    {{ message }}
+            {% endfor %}
+        {% endif %}
     <div class="login-container">
         <h2>ورود</h2>
         <form action="{% url 'login_user' %}" method="POST">

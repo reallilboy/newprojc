@@ -20,15 +20,10 @@
     }
 </style>
     <body>
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-danger" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
+
          {% block content %}
          {% endblock %}
+      
     <footer>
         <div class="container">
             <div class="row">
