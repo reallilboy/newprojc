@@ -92,9 +92,12 @@
                 </div>
             </div>
             <div class="col-lg-4">
+                {% if products_detail.is_sale %}
                 <div class="right-content">
                     <h4>{{ products_detail.product_name }}</h4>
-                    <span class="price">{{ products_detail.price }} تومان</span>
+                   <strike> <span class="price">{{ products_detail.price }} تومان</span></strike>
+                    <span class="price">{{ products_detail.sale_price }} قیمت با تخفیف</span>
+                    {% endif %}
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -207,12 +210,8 @@
               $("."+selectedClass).fadeIn();
               $("#portfolio").fadeTo(50, 1);
             }, 500);
-
             });
         });
-
     </script>
-
   </body>
-
 </html>
