@@ -8,7 +8,7 @@ from .forms import CustomUserForm
 
 def home(request):
         products = Products.objects.all()
-        return render(request,'index.html',{'products':products})
+        return render(request,'home.html',{'products':products})
 
 def login_user(request):
         if request.method == 'POST':

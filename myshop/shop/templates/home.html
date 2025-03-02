@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
-        {% block content %}
-         {% include 'nav.html' %}
 
-     <div class="container">
-    <h1>{{ category }}</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'nav.html' %}
+ <div class="container">
+        <h1>محصولات ما</h1>
 
         {% for product in products %}
         {% if product.is_sale %}
@@ -27,4 +28,4 @@
         {% endfor %}
 </div>
 
-{% endblock %}
+{% endblock content %}
