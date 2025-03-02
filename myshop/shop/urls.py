@@ -7,4 +7,5 @@ urlpatterns = [
         path('signup_user/',shop_views.signup_user,name='signup_user'),
         path('product_detail/<int:pk>',shop_views.single_product,name='single_product'),
         path('products_category/<str:foo>',shop_views.product_category,name='products_category'),
+        path('cart/',include('cart.urls'))
 ]
