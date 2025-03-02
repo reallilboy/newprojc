@@ -88,7 +88,6 @@
                 <div class="col-lg-8">
                 <div class="left-images">
                     <img src="{{ products_detail.product_image.url }}" alt="">
-                    <img src="assets/images/single-product-02.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -97,6 +96,10 @@
                     <h4>{{ products_detail.product_name }}</h4>
                    <strike> <span class="price">{{ products_detail.price }} تومان</span></strike>
                     <span class="price">{{ products_detail.sale_price }} قیمت با تخفیف</span>
+                    {% else %}
+                    <div class="right-content">
+                    <h4>{{ products_detail.product_name }}</h4>
+                    <span class="price">{{ products_detail.price }} تومان</span>
                     {% endif %}
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
@@ -120,7 +123,7 @@
                         </div>
                     </div>
                     <div class="total">
-                        <h4>Total: $210.00</h4>
+                        <a href="{% url 'home' %}" class="btn"> خانه</a>
                         <div class="main-border-button"><a href="#">Add To Cart</a></div>
                     </div>
                 </div>

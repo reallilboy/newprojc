@@ -25,12 +25,9 @@ def login_user(request):
         else:
                 return render(request,'login_user.html')
 
-
 def logout_user(request):
         logout(request)
         return redirect('home')
-
-
 
 def signup_user(request):
     if request.method == 'POST':
@@ -48,3 +45,13 @@ def signup_user(request):
 def single_product(request,pk):
        products_detail = Products.objects.get(id=pk)
        return render(request,'single_product.html',{'products_detail':products_detail})
+
+def product_category(request,foo):
+        foo = foo.replace('-',' ')
+        try:
+                category = Category.objects.get(name=foo)
+                products = Products.objects.filter(category=category)
+                return render(request,'categorys.html',{'products':products,'category':category})
+        except:
+                messages.success(request,('category not exixts'))
+                return redirect('home')

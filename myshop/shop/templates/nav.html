@@ -6,6 +6,7 @@
             <div></div>
         </div>
     </div>
+
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
@@ -22,10 +23,10 @@
                                 <a class="badge rounded-pill bg-success" href={% url 'login_user' %} style='padding: 15px 10px;'>LOGIN</a>
                                 <a class="badge rounded-pill bg-warning" href="{% url 'signup_user' %}" style='padding: 15px 10px;'>SIGNUP</a>
                             {% endif %}
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
-                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'products_category' 'man' %}">Men's</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'products_category' 'woman' %}">Women's</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'products_category' 'kid' %}">Kid's</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Pages</a>
                                 <ul>
@@ -40,6 +41,7 @@
             </div>
         </div>
     </header>
+
     <div class="" id="top">
         <div class="container">
             <div class="row">
