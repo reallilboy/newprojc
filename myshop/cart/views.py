@@ -15,7 +15,8 @@ def cart_add(request):
                 products_id = int(request.POST.get('product_id'))
                 product = get_object_or_404(Products,id=products_id)
                 cart.add(product=product)
-                return JsonResponse({ 'product name': product.product_name})
+                cart_quantity = cart.__len__()
+                return JsonResponse({ 'qty': cart_quantity  })
 
 def cart_delete(request):
         pass

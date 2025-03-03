@@ -15,8 +15,11 @@ class Cart():
                 product_id = str(product.id)
                 if product_id in self.cart:
                         pass
+                        # self.cart[product_id] = {'qty': 1, 'price': str(product.price)}
                 else:
-                        self.cart[product_id] = {'price':str(product.price)}
+                        self.cart[product_id] = {}
+                        self.save()
+        def save(self):
                 self.session.modified = True
         def __len__(self):
                 return len(self.cart)

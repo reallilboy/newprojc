@@ -1,9 +1,8 @@
 {% load static %}
 <style>
-   /* استایل دکمه‌ها */
         .category-buttons {
             display: flex;
-            gap: 20px; /* فاصله بین دکمه‌ها */
+            gap: 20px;
         }
 
         .category-buttons a {
@@ -20,9 +19,8 @@
             background-color: #2980b9;
         }
 
-        /* استایل برای هر دکمه (اختیاری) */
         .category-buttons a:nth-child(1) {
-            background-color: #e67e22; /* رنگ نارنجی */
+            background-color: #e67e22;
         }
 
         .category-buttons a:nth-child(1):hover {
@@ -30,7 +28,7 @@
         }
 
         .category-buttons a:nth-child(2) {
-            background-color: #2ecc71; /* رنگ سبز */
+            background-color: #2ecc71;
         }
 
         .category-buttons a:nth-child(2):hover {
@@ -38,20 +36,22 @@
         }
 
         .category-buttons a:nth-child(3) {
-            background-color: #9b59b6; /* رنگ بنفش */
+            background-color: #9b59b6;
         }
 
         .category-buttons a:nth-child(3):hover {
             background-color: #8e44ad;
         }
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <header>
-        <!-- لوگو یا عنوان سایت -->
         <div class="logo">فروشگاه من</div>
-        <div class="ml-auto">
-            <span id="cart-count" class="badge badge-danger" id="cart_quantity">12</span>
-    </div>
-
+<a class="btn btn-outline-primary position-relative">
+    <i class="fas fa-shopping-cart"></i> 
+    <span id="cart_quantity" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ cart|length }}
+    </span>
+</a>
         {% if user.is_authenticated %}
         خوش اومدی{{user.username}}
         {% endif %}
@@ -59,6 +59,7 @@
         <div class="buttons">
             {% if user.is_authenticated%}
             <a href="{% url 'logout_user' %}">خروج</a>
+            <a href="{% url 'update_prof' %}">تغییراطلاعات کاربری</a>
             {% else %}
             <a href="{% url 'signup_user' %}">ثبت نام</a>
             <a href="{% url 'login_user' %}">ورود</a>

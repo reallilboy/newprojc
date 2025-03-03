@@ -55,3 +55,8 @@ def product_category(request,foo):
         except:
                 messages.success(request,('category not exixts'))
                 return redirect('home')
+
+
+
+def update_prof(request):
+        return render(request,'update_prof.html',{})
