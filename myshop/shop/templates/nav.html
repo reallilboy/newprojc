@@ -48,6 +48,10 @@
    <header>
         <!-- لوگو یا عنوان سایت -->
         <div class="logo">فروشگاه من</div>
+        <div class="ml-auto">
+            <span id="cart-count" class="badge badge-danger" id="cart_quantity">12</span>
+    </div>
+
         {% if user.is_authenticated %}
         خوش اومدی{{user.username}}
         {% endif %}

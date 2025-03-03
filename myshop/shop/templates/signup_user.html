@@ -71,6 +71,10 @@ button:hover {
 .login-link a:hover {
     text-decoration: underline;
 }
+ body{
+      background: linear-gradient(to right, #dad299, #b0dab9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -115,7 +119,7 @@ button:hover {
                         <button type="submit" class="btn btn-primary w-100">ثبت نام</button>
                     </form>
                     <br>
-                    <a href="{% url 'login_user' %}" type="submit" class="btn btn-primary w-100">حساب کاربری دارید؟</a>
+                    <a href="{% url 'login_user' %}" type="submit" class="btn btn-success w-100">حساب کاربری دارید؟</a>
                 </div>
             </div>
         </div>
