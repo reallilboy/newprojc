@@ -1,36 +1,84 @@
+
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
 {% include 'nav.html' %}
+
 <div class="container my-5">
     <h1 class="text-center mb-4">سبد خرید شما</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% if cart_products %}
-    {% for c_p in cart_products %}
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <img src="{{ c_p.product_image.url }}"
-                     class="card-img-top p-3"
-                     alt="{{ c_p.product_name }}"
-                     style="height: 250px; object-fit: contain;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ c_p.product_name }}</h5>
-                    <p class="card-text text-muted">{{ c_p.description|truncatechars:100 }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        {% if c_p.is_sale %}
-                            <del class="text-danger">{{ c_p.price|floatformat:0 }} تومان</del>
-                            <span class="text-success fs-5">{{ c_p.sale_price|floatformat:0 }} تومان</span>
-                        {% else %}
-                            <span class="text-success fs-5">{{ c_p.price|floatformat:0 }} تومان</span>
+            {% for product in cart_products %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ product.product_image.url }}"
+                             class="card-img-top p-3"
+                             alt="{{ product.product_name }}"
+                             style="height: 250px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.product_name }}</h5>
+                            <p class="card-text text-muted">{{ product.description|truncatechars:100 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                {% if product.is_sale %}
+                                    <del class="text-danger">{{ product.price|floatformat:0 }} تومان</del>
+                                    <span class="text-success fs-5">{{ product.sale_price|floatformat:0 }} تومان</span>
+                                {% else %}
+                                    <span class="text-success fs-5">{{ product.price|floatformat:0 }} تومان</span>
+                                {% endif %}
+                            </div>
+                            {% for k,v in products_qtys.items %}
+                            {% if k == product.id|slugify%}
+                            <div class="mt-3">
+                                <span class="text-muted">تعداد:{{ k }}</span>
+                            </div>
+                        </div>
                         {% endif %}
+                        {% endfor %}
+                        <div class="card-footer bg-white border-0">
+    <div class="d-grid gap-2">
+        <a href="{% url 'single_product' product.id %}"
+           class="btn btn-outline-primary">مشاهده جزئیات</a>
+        <button class="btn btn-danger remove-from-cart"
+                data-product-id="{{ product.id }}">
+            حذف از سبد خرید
+        </button>
+    </div>
+</div>
                     </div>
                 </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-warning">سبد خرید شما خالی است!</div>
             </div>
-        </div>
-         {% endfor %}
-         {% else %}
-         <div class="col-12">
-            <div class="alert alert-warning">هیچ محصولی یافت نشد!</div>
-        </div>
-         {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+    $(document).on('click', '.remove-from-cart', function(e) {
+        e.preventDefault();
+        const productId = $(this).data('product-id');
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'cart_remove' %}",
+            data: {
+                product_id: productId,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post',
+            },
+            success: function(json) {
+                console.log(json);
+                alert('متاسفانه در این قسمت هم یک باگی وجود داره که همه تعداد محصولات رو قارتی حذفمیکنه');
+                location.reload();
+            },
+            error: function(xhr, errmsg, err) {
+                console.error('خطا در حذف محصول از سبد خرید:', errmsg);
+            },
+        });
+    });
+});
+</script>
 {% endblock %}

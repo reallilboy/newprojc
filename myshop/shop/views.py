@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from . models import Products,Category
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
-from .forms import CustomUserForm
+from .forms import CustomUserForm,UserProfileForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -60,3 +61,21 @@ def product_category(request,foo):
 
 def update_prof(request):
         return render(request,'update_prof.html',{})
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'اطلاعات شما با موفقیت به‌روزرسانی شد!')
+            return redirect('home')
+    else:
+        form = UserProfileForm(instance=request.user)
+    return render(request, 'update_prof.html', {'form': form})
+
+
+@login_required
+def profile(request):
+        user = request.user
+        return render(request,'profile.html',{'user':user})

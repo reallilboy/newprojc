@@ -133,7 +133,7 @@
         <div class="buttons">
             {% if user.is_authenticated%}
             <a href="{% url 'logout_user' %}">خروج</a>
-            <a href="{% url 'update_prof' %}">تغییراطلاعات کاربری</a>
+            <a href="{% url 'edit_profile' %}">تغییراطلاعات کاربری</a>
             {% else %}
             <a href="{% url 'signup_user' %}">ثبت نام</a>
             <a href="{% url 'login_user' %}">ورود</a>
@@ -154,8 +154,18 @@
                  <p>توضیحات کوتاه درباره محصول ۱. این محصول دارای ویژگی‌های منحصر به فردی است که آن را از دیگر محصولات متمایز می‌کند.</p>
                  <strike> <p class="price">قیمت: {{ products_detail.price }} تومان</p></strike>
                  <p class="price">قیمت: {{ products_detail.sale_price }} تومان</p>
+                  <select class="form-select" aria-label="Default select example" id="qty-add">
+                    <option selected>تعداد سفارش</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+            </select>
+            <br>
+            <br>
                 <button class="btn btn-success add-to-cart" data-product-id="{{ products_detail.id }}"> افزودن به سبد خرید</button>
                 <a href="{% url 'home' %}"  class=" btn btn-warning">برگشت</a>
+                <br>
+
             </div>
         {% else %}
         <div class="product">
@@ -163,9 +173,18 @@
             <h2> {{ products_detail.product_name }} </h2>
             <p>توضیحات کوتاه درباره محصول ۱. این محصول دارای ویژگی‌های منحصر به فردی است که آن را از دیگر محصولات متمایز می‌کند.</p>
             <p class="price">قیمت: {{ products_detail.price }} تومان</p>
-            <button class="btn btn-success add-to-cart" data-product-id="{{ products_detail.id }}"> افزودن به سبد خرید </button>
+               <select class="form-select" aria-label="Default select example"  id="qty-add">
+                    <option selected>تعداد سفارش</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+            </select>
+            <br>
+            <br>
+            <button  onclick="getSelectedValue()" class="btn btn-success add-to-cart" data-product-id="{{ products_detail.id }}"> افزودن به سبد خرید </button>
             <a href="{% url 'home' %}"  class=" btn btn-warning">برگشت</a>
         </div>
+
         {% endif %}
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
@@ -177,6 +196,7 @@ $(document).ready(function() {
             type: 'POST',
             url: "{% url 'cart_add' %}",
             data: {
+                product_quantity : $('#qty-add option:selected').text(),
                 product_id: productId,
                 csrfmiddlewaretoken: '{{ csrf_token }}',
                 action: 'post',
@@ -194,6 +214,7 @@ $(document).ready(function() {
         });
     });
 });
+
 </script>
 </body>
 </html>

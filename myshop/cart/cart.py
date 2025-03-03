@@ -10,13 +10,14 @@ class Cart():
                 if 'session_key' not in request.session:
                         cart = self.session['session_key'] = {}
                 self.cart = cart
-        def add(self,product):
+        def add(self,product,quantity):
                 product_id = str(product.id)
+                product_qty = str(quantity)
                 if product_id in self.cart:
                         pass
                         # self.cart[product_id] = {'qty': 1, 'price': str(product.price)}
                 else:
-                        self.cart[product_id] = {}
+                        self.cart[product_id] = int(product_qty)
                         self.save()
         def save(self):
                 self.session.modified = True
@@ -26,3 +27,11 @@ class Cart():
                 products_id = self.cart.keys()
                 products = Products.objects.filter(id__in=products_id)
                 return products
+        def get_qty(self):
+                quantity = self.cart
+                return quantity
+        def remove(self, product):
+                product_id = str(product.id)
+                if product_id in self.cart:
+                        del self.cart[product_id]
+                        self.save()
