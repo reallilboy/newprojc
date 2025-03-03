@@ -6,24 +6,17 @@
 
 <div class="container my-5">
     <h1 class="text-center mb-4">محصولات ما</h1>
-
-    <!-- سیستم گرید ۳ ستونی -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for product in products %}
         <div class="col">
             <div class="card h-100 shadow-sm">
-                <!-- تصویر محصول -->
                 <img src="{{ product.product_image.url }}"
                      class="card-img-top p-3"
                      alt="{{ product.product_name }}"
                      style="height: 250px; object-fit: contain;">
-
                 <div class="card-body">
-                    <!-- نام و توضیحات -->
                     <h5 class="card-title">{{ product.product_name }}</h5>
                     <p class="card-text text-muted">{{ product.description|truncatechars:100 }}</p>
-
-                    <!-- قیمت‌ها -->
                     <div class="d-flex justify-content-between align-items-center">
                         {% if product.is_sale %}
                             <del class="text-danger">{{ product.price|floatformat:0 }} تومان</del>
@@ -33,8 +26,6 @@
                         {% endif %}
                     </div>
                 </div>
-
-                <!-- دکمه‌های اقدام -->
                 <div class="card-footer bg-white border-0">
                     <div class="d-grid gap-2">
                         <a href="{% url 'single_product' product.id %}"
@@ -66,22 +57,16 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}' // توکن CSRF از Django
+                    'X-CSRFToken': '{{ csrf_token }}'
                 },
                 body: JSON.stringify({
                     product_id: productId
                 })
             });
-
-            // بررسی وضعیت پاسخ
             if (!response.ok) {
                 throw new Error(`خطای HTTP: ${response.status}`);
             }
-
-            // تبدیل پاسخ به JSON
             const data = await response.json();
-
-            // به‌روزرسانی تعداد سبد خرید
             document.getElementById('cart-count').textContent = data.cart_item_count;
             alert('محصول با موفقیت افزوده شد!');
 

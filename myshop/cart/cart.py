@@ -1,7 +1,6 @@
 from django.db import models
 from shop.models import Products
-# Create your models here.
-
+import datetime
 
 
 class Cart():
@@ -23,3 +22,7 @@ class Cart():
                 self.session.modified = True
         def __len__(self):
                 return len(self.cart)
+        def get_prods(self):
+                products_id = self.cart.keys()
+                products = Products.objects.filter(id__in=products_id)
+                return products
